@@ -1,5 +1,12 @@
 package com.br.zup.vicente_imoveis.Endereco;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@RequiredArgsConstructor
+@Getter
+@Setter
 public class Endereco {
 
     private String logradouro;
