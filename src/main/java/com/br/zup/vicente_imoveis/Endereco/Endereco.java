@@ -4,10 +4,18 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "enderecos")
 @RequiredArgsConstructor
 @Getter
 @Setter
 public class Endereco {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String logradouro;
     private int numero;
