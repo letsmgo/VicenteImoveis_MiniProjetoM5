@@ -4,6 +4,8 @@ import com.br.zup.vicente_imoveis.Endereco.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ImovelService {
 
@@ -17,6 +19,9 @@ public class ImovelService {
         return imovelRepository.save(imovel);
     }
 
-
+    public List<Imovel> exibirImoveisCadastrados(){
+        Iterable<Imovel> imoveis = imovelRepository.findAll();
+        return (List<Imovel>) imoveis;
+    }
 
 }
