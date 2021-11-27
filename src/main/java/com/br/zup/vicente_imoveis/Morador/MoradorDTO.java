@@ -4,23 +4,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
-@Entity
-@Table(name = "moradores")
 @RequiredArgsConstructor
 @Getter
 @Setter
-
-public class Morador {
-
-    @Id
+public class MoradorDTO {
     private String cpf;
     private String nome;
     private String telefone;
     private Date dataDeEntradaNoImovel;
-
 }
