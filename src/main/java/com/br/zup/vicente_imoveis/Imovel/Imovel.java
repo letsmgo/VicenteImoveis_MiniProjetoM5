@@ -18,6 +18,7 @@ import java.util.List;
 public class Imovel {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private double valor;
     private String tipoDeImovel;
