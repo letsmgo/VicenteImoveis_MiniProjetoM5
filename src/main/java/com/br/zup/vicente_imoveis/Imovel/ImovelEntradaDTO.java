@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
 @RequiredArgsConstructor
 @Getter
 @Setter
@@ -23,14 +22,4 @@ public class ImovelEntradaDTO {
     private TipoDeContrato tipoDeContrato;
     private boolean ocupado;
 
-    public ImovelEntradaDTO(double valor, String tipoDeImovel, int qtdBanheiros,
-                            Endereco endereco, double metragem, TipoDeContrato tipoDeContrato, boolean ocupado) {
-        this.valor = valor;
-        this.tipoDeImovel = tipoDeImovel;
-        this.qtdBanheiros = qtdBanheiros;
-        this.endereco = endereco;
-        this.metragem = metragem;
-        this.tipoDeContrato = tipoDeContrato;
-        this.ocupado = ocupado;
-    }
 }
