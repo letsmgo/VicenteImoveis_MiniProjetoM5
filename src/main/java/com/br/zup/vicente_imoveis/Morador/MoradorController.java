@@ -38,4 +38,10 @@ public class MoradorController {
         return moradoresDTO;
     }
 
+    @DeleteMapping(path = {"/{cpf}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarMorador(@PathVariable String cpf){
+        moradorService.deletarMorador(cpf);
+    }
+
 }
