@@ -38,4 +38,10 @@ public class ImovelController {
         return imoveisDTO;
     }
 
+    @GetMapping(path = {("/{id}")})
+    public ImovelSaidaDTO exibirImovel (@PathVariable int id){
+        Imovel imovel= imovelService.buscarImovelPorID(id);
+        return modelMapper.map(imovel,ImovelSaidaDTO.class);
+    }
+
 }
