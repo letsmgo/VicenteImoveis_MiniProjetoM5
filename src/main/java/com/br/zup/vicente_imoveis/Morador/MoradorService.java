@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MoradorService {
@@ -19,7 +20,14 @@ public class MoradorService {
         return (List<Morador>) moradores;
     }
 
-    public void deletarMorador(String cpf){
-        moradorRepository.deleteById(cpf);
+    public Morador buscarMoradorPorID(String id){
+        Optional<Morador> morador=moradorRepository.findById(id);
+        if (morador.isEmpty()){
+            throw new RuntimeException("Morador não encontrado");
+        }
+        return morador.get();
     }
+  
+   public void deletarMorador(String cpf){
+        moradorRepository.deleteById(cpf);
 }
