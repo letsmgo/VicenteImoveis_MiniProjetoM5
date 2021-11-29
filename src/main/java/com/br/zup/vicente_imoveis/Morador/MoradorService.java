@@ -19,4 +19,7 @@ public class MoradorService {
         return (List<Morador>) moradores;
     }
 
+    public void deletarMorador(String cpf){
+        moradorRepository.deleteById(cpf);
+    }
 }
