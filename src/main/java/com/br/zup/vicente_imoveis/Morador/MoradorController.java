@@ -37,5 +37,9 @@ public class MoradorController {
         }
         return moradoresDTO;
     }
-
+    @GetMapping(path = {("/{id}")})
+    public MoradorSaidaDTO exibirMorador (@PathVariable String id){
+        Morador morador= moradorService.buscarMoradorPorID(id);
+        return modelMapper.map(morador, MoradorSaidaDTO.class);
+    }
 }
