@@ -33,4 +33,8 @@ public class ImovelService {
         return imovel.get();
     }
 
+    public void deletarImovel(int id){
+        imovelRepository.deleteById(id);
+    }
+
 }
