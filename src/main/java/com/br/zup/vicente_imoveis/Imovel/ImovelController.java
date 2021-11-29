@@ -44,4 +44,10 @@ public class ImovelController {
         return modelMapper.map(imovel,ImovelSaidaDTO.class);
     }
 
+    @DeleteMapping(path = {"/{id}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarImovel(@PathVariable int id){
+        imovelService.deletarImovel(id);
+    }
+
 }
