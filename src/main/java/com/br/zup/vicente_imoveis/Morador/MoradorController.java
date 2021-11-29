@@ -1,5 +1,7 @@
 package com.br.zup.vicente_imoveis.Morador;
 
+import com.br.zup.vicente_imoveis.Imovel.Imovel;
+import com.br.zup.vicente_imoveis.Imovel.ImovelSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +38,12 @@ public class MoradorController {
             moradoresDTO.add(moradorDTO);
         }
         return moradoresDTO;
+    }
+
+    @GetMapping(path = {("/{cpf}")})
+    public MoradorDTO exibirMorador (@PathVariable String cpf){
+        Morador morador= moradorService.buscarMoradorPorID(cpf);
+        return modelMapper.map(morador,MoradorDTO.class);
     }
 
 }
