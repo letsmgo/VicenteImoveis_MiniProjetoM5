@@ -22,7 +22,7 @@ public class Imovel {
     private int id;
     private double valor;
     private String tipoDeImovel;
-    @OneToMany//conferir se é este relacionamento mesmo
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Morador> moradores;
     private int qtdBanheiros;
     @OneToOne
