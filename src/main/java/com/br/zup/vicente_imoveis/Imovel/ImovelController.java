@@ -26,13 +26,13 @@ public class ImovelController {
     }
 
     @GetMapping
-    public List<ImovelEntradaDTO> exibirImoveis(){
-        List<ImovelEntradaDTO> imoveisDTO = new ArrayList<>();
+    public List<ImovelSaidaDTO> exibirImoveis(){
+        List<ImovelSaidaDTO> imoveisDTO = new ArrayList<>();
 
         for (Imovel imovel: imovelService.exibirImoveisCadastrados()){
-            ImovelEntradaDTO imovelDTO = new ImovelEntradaDTO(imovel.getValor(), imovel.getTipoDeImovel(),
-                    imovel.getQtdBanheiros(), imovel.getEndereco(), imovel.getMetragem(),imovel.getTipoDeContrato(),
-                    imovel.isOcupado());
+            ImovelSaidaDTO imovelDTO = new ImovelSaidaDTO(imovel.getValor(), imovel.getTipoDeImovel(),
+                    imovel.getMoradores(), imovel.getQtdBanheiros(), imovel.getEndereco(), imovel.getMetragem(),
+                    imovel.getTipoDeContrato(), imovel.isOcupado());
             imoveisDTO.add(imovelDTO);
         }
         return imoveisDTO;
