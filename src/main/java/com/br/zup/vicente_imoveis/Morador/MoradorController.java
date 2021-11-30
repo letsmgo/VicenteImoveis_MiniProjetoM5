@@ -32,7 +32,7 @@ public class MoradorController {
 
         for (Morador morador : moradorService.exibirMoradoresCadastrados()) {
             MoradorDTO moradorDTO = new MoradorDTO(morador.getCpf(), morador.getNome(),
-                    morador.getTelefone(), morador.getDataDeEntradaNoImovel());
+                    morador.getTelefone());
             moradoresDTO.add(moradorDTO);
         }
         return moradoresDTO;

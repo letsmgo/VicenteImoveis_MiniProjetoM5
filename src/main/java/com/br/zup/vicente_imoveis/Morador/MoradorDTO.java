@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Id;
-import java.util.Date;
 
 @RequiredArgsConstructor
 @Getter
@@ -14,13 +12,11 @@ public class MoradorDTO {
     private String cpf;
     private String nome;
     private String telefone;
-    private Date dataDeEntradaNoImovel;
 
-
-    public MoradorDTO(String cpf, String nome, String telefone, Date dataDeEntradaNoImovel) {
+    public MoradorDTO(String cpf, String nome, String telefone) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
-        this.dataDeEntradaNoImovel = dataDeEntradaNoImovel;
     }
+
 }

@@ -15,11 +15,9 @@ public class ImovelEntradaDTO {
 
     private double valor;
     private String tipoDeImovel;
-    private List<Morador> moradores;
     private int qtdBanheiros;
     private Endereco endereco;
     private double metragem;
     private TipoDeContrato tipoDeContrato;
-    private boolean ocupado;
 
 }
