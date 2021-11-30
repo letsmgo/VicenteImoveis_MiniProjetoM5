@@ -27,4 +27,7 @@ public class MoradorService {
         }
         return morador.get();
     }
+  
+   public void deletarMorador(String cpf){
+        moradorRepository.deleteById(cpf);
 }

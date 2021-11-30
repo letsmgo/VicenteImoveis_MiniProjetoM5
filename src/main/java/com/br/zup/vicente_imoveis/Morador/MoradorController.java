@@ -37,9 +37,18 @@ public class MoradorController {
         }
         return moradoresDTO;
     }
+  
     @GetMapping(path = {("/{id}")})
     public MoradorSaidaDTO exibirMorador (@PathVariable String id){
         Morador morador= moradorService.buscarMoradorPorID(id);
         return modelMapper.map(morador, MoradorSaidaDTO.class);
     }
+
+   @DeleteMapping(path = {"/{cpf}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarMorador(@PathVariable String cpf){
+        moradorService.deletarMorador(cpf);
+    }
+
+  
 }
