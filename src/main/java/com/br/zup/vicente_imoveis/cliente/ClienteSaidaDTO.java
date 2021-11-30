@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Morador;
+package com.br.zup.vicente_imoveis.cliente;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class MoradorSaidaDTO {
+public class ClienteSaidaDTO {
 
     @Id
     private String cpf;
