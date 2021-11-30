@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/contratos")
 public class ContratoController {
     @Autowired
-    ContratoService2 contratoService;
+    ContratoService contratoService;
     @Autowired
     ModelMapper modelMapper;
 
