@@ -1,6 +1,7 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
 import com.br.zup.vicente_imoveis.Endereco.Endereco;
+import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 
 import lombok.Getter;
@@ -26,5 +27,6 @@ public class Imovel {
     private Endereco endereco;
     private double metragem;
     private TipoDeContrato tipoDeContrato;
+    private StatusImovel statusImovel;
 
 }
