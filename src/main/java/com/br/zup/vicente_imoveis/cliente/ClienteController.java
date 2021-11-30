@@ -50,5 +50,11 @@ public class ClienteController {
         clienteService.deletarCliente(cpf);
     }
 
-  
+    @PutMapping(path = {"/{cpf}"})
+    public ClienteSaidaDTO atualizarCliente(@PathVariable String cpf, @RequestBody ClienteAtualizarDTO clienteAtualizarDTO){
+        Cliente cliente = clienteService.atualizarCliente(cpf, clienteAtualizarDTO);
+
+        return modelMapper.map(cliente, ClienteSaidaDTO.class);
+    }
+
 }
