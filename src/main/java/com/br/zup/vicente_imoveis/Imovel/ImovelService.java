@@ -37,4 +37,22 @@ public class ImovelService {
         imovelRepository.deleteById(id);
     }
 
+    public Imovel atualizarImovel(int id, ImovelAtualizarDTO imovelEntrada){
+        Optional<Imovel> imovel = imovelRepository.findById(id);
+        if (imovel.isEmpty()){
+            throw new RuntimeException("Imóvel não cadastrado, por gentileza efetue o cadastro primeiro.");
+        }
+
+        Imovel imovelParaAtualizar = imovel.get();
+        imovelParaAtualizar.setValor(imovelEntrada.getValor());
+        imovelParaAtualizar.setTipoDeImovel(imovelEntrada.getTipoDeImovel());
+        imovelParaAtualizar.setQtdBanheiros(imovelEntrada.getQtdBanheiros());
+        imovelParaAtualizar.setMetragem(imovelEntrada.getMetragem());
+        imovelParaAtualizar.setTipoDeContrato(imovelEntrada.getTipoDeContrato());
+
+        imovelRepository.save(imovelParaAtualizar);
+        return imovelParaAtualizar;
+
+    }
+
 }
