@@ -30,9 +30,8 @@ public class ImovelController {
         List<ImovelSaidaDTO> imoveisDTO = new ArrayList<>();
 
         for (Imovel imovel: imovelService.exibirImoveisCadastrados()){
-            ImovelSaidaDTO imovelDTO = new ImovelSaidaDTO(imovel.getValor(), imovel.getTipoDeImovel(),
-                    imovel.getMoradores(), imovel.getQtdBanheiros(), imovel.getEndereco(), imovel.getMetragem(),
-                    imovel.getTipoDeContrato(), imovel.isOcupado());
+            ImovelSaidaDTO imovelDTO = new ImovelSaidaDTO(imovel.getId(), imovel.getValor(), imovel.getTipoDeImovel(), imovel.getQtdBanheiros(), imovel.getEndereco(), imovel.getMetragem(),
+                    imovel.getTipoDeContrato());
             imoveisDTO.add(imovelDTO);
         }
         return imoveisDTO;
