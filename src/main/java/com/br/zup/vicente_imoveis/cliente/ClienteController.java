@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Morador;
+package com.br.zup.vicente_imoveis.cliente;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,45 +9,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/moradores")
-public class MoradorController {
+@RequestMapping("/clientes")
+public class ClienteController {
 
     @Autowired
-    MoradorService moradorService;
+    ClienteService clienteService;
     @Autowired
     ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MoradorDTO cadastrarMorador(@RequestBody MoradorDTO moradorDTO) {
-        Morador morador = modelMapper.map(moradorDTO, Morador.class);
-        moradorService.salvarMorador(morador);
-        return moradorDTO;
+    public ClienteDTO cadastrarCliente(@RequestBody ClienteDTO clienteDTO) {
+        Cliente cliente = modelMapper.map(clienteDTO, Cliente.class);
+        clienteService.salvarCliente(cliente);
+        return clienteDTO;
     }
 
     @GetMapping
-    public List<MoradorDTO> exibirMoradores() {
+    public List<ClienteDTO> exibirClientes() {
 
-        List<MoradorDTO> moradoresDTO = new ArrayList<>();
+        List<ClienteDTO> clientesDTO = new ArrayList<>();
 
-        for (Morador morador : moradorService.exibirMoradoresCadastrados()) {
-            MoradorDTO moradorDTO = new MoradorDTO(morador.getCpf(), morador.getNome(),
-                    morador.getTelefone());
-            moradoresDTO.add(moradorDTO);
+        for (Cliente cliente : clienteService.exibirClientesCadastrados()) {
+            ClienteDTO clienteDTO = new ClienteDTO(cliente.getCpf(), cliente.getNome(),
+                    cliente.getTelefone());
+            clientesDTO.add(clienteDTO);
         }
-        return moradoresDTO;
+        return clientesDTO;
     }
   
     @GetMapping(path = {("/{id}")})
-    public MoradorSaidaDTO exibirMorador (@PathVariable String id){
-        Morador morador= moradorService.buscarMoradorPorID(id);
-        return modelMapper.map(morador, MoradorSaidaDTO.class);
+    public ClienteSaidaDTO exibirCliente (@PathVariable String id){
+        Cliente cliente = clienteService.buscarClientePorID(id);
+        return modelMapper.map(cliente, ClienteSaidaDTO.class);
     }
 
    @DeleteMapping(path = {"/{cpf}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarMorador(@PathVariable String cpf){
-        moradorService.deletarMorador(cpf);
+    public void deletarCliente(@PathVariable String cpf){
+        clienteService.deletarCliente(cpf);
     }
 
   

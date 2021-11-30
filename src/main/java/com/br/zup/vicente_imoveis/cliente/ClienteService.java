@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Morador;
+package com.br.zup.vicente_imoveis.cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,29 +7,29 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MoradorService {
+public class ClienteService {
     @Autowired
-    MoradorRepository moradorRepository;
+    ClienteRepository clienteRepository;
 
-    public Morador salvarMorador(Morador morador) {
-        return moradorRepository.save(morador);
+    public Cliente salvarCliente(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
-    public List<Morador> exibirMoradoresCadastrados() {
-        Iterable<Morador> moradores = moradorRepository.findAll();
-        return (List<Morador>) moradores;
+    public List<Cliente> exibirClientesCadastrados() {
+        Iterable<Cliente> clientes = clienteRepository.findAll();
+        return (List<Cliente>) clientes;
     }
 
-    public Morador buscarMoradorPorID(String id) {
-        Optional<Morador> morador = moradorRepository.findById(id);
-        if (morador.isEmpty()) {
-            throw new RuntimeException("Morador não encontrado");
+    public Cliente buscarClientePorID(String id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        if (cliente.isEmpty()) {
+            throw new RuntimeException("Cliente não encontrado");
         }
-        return morador.get();
+        return cliente.get();
     }
 
-    public void deletarMorador(String cpf) {
-        moradorRepository.deleteById(cpf);
+    public void deletarCliente(String cpf) {
+        clienteRepository.deleteById(cpf);
     }
 
 }

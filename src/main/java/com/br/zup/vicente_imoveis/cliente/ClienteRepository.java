@@ -1,7 +1,7 @@
-package com.br.zup.vicente_imoveis.Morador;
+package com.br.zup.vicente_imoveis.cliente;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface MoradorRepository extends CrudRepository<Morador, String> {
+public interface ClienteRepository extends CrudRepository<Cliente, String> {
 
 }

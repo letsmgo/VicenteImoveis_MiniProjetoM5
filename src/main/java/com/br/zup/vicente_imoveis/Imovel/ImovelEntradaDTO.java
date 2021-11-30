@@ -2,12 +2,10 @@ package com.br.zup.vicente_imoveis.Imovel;
 
 import com.br.zup.vicente_imoveis.Endereco.Endereco;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
-import com.br.zup.vicente_imoveis.Morador.Morador;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @Setter

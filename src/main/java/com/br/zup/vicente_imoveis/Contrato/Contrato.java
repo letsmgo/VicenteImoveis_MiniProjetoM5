@@ -1,7 +1,7 @@
 package com.br.zup.vicente_imoveis.Contrato;
 
 import com.br.zup.vicente_imoveis.Imovel.Imovel;
-import com.br.zup.vicente_imoveis.Morador.Morador;
+import com.br.zup.vicente_imoveis.cliente.Cliente;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -22,7 +22,7 @@ public class Contrato {
     @OneToOne
     private Imovel imovel;
     @OneToOne
-    private Morador morador;
+    private Cliente cliente;
     private StatusDoContrato statusDoContrato;
     private Date dataDoContrato;
 
