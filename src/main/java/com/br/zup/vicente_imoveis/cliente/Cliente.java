@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Morador;
+package com.br.zup.vicente_imoveis.cliente;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,12 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "moradores")
+@Table(name = "clientes")
 @RequiredArgsConstructor
 @Getter
 @Setter
 
-public class Morador {
+public class Cliente {
 
     @Id
     private String cpf;
