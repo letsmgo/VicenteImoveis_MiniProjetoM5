@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "moradores")
@@ -19,6 +18,5 @@ public class Morador {
     private String cpf;
     private String nome;
     private String telefone;
-    private Date dataDeEntradaNoImovel;
 
 }

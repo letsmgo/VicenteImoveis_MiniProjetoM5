@@ -11,23 +11,25 @@ public class MoradorService {
     @Autowired
     MoradorRepository moradorRepository;
 
-    public Morador salvarMorador(Morador morador){
+    public Morador salvarMorador(Morador morador) {
         return moradorRepository.save(morador);
     }
 
-    public List<Morador> exibirMoradoresCadastrados(){
+    public List<Morador> exibirMoradoresCadastrados() {
         Iterable<Morador> moradores = moradorRepository.findAll();
         return (List<Morador>) moradores;
     }
 
-    public Morador buscarMoradorPorID(String id){
-        Optional<Morador> morador=moradorRepository.findById(id);
-        if (morador.isEmpty()){
+    public Morador buscarMoradorPorID(String id) {
+        Optional<Morador> morador = moradorRepository.findById(id);
+        if (morador.isEmpty()) {
             throw new RuntimeException("Morador não encontrado");
         }
         return morador.get();
     }
-  
-   public void deletarMorador(String cpf){
+
+    public void deletarMorador(String cpf) {
         moradorRepository.deleteById(cpf);
+    }
+
 }
