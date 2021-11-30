@@ -32,4 +32,19 @@ public class ClienteService {
         clienteRepository.deleteById(cpf);
     }
 
+    public Cliente atualizarCliente(String cpf, ClienteAtualizarDTO clienteAtualizarDTO){
+        Optional<Cliente> cliente = clienteRepository.findById(cpf);
+        if (cliente.isEmpty()){
+            throw new RuntimeException("Cliente não cadastrado, por gentileza efetue o cadastro primeiro.");
+
+        }
+        Cliente clienteParaAtualizar = cliente.get();
+        clienteParaAtualizar.setTelefone(clienteAtualizarDTO.getTelefone());
+
+        clienteRepository.save(clienteParaAtualizar);
+
+        return clienteParaAtualizar;
+
+    }
+
 }
