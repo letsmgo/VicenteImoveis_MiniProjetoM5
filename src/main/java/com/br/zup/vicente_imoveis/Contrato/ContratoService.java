@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.List;
+
 
 @Service
 public class ContratoService {
@@ -40,11 +42,10 @@ public class ContratoService {
         return contratoRepository.save(contrato);
     }
 
-
-
-
-
-
+    public List<Contrato> exibirContratosCadastrados(){
+        Iterable<Contrato> contratos = contratoRepository.findAll();
+        return (List<Contrato>) contratos;
+    }
 
     public Contrato localizarContratoPorId(int id){
         Optional<Contrato> contratoOptional = contratoRepository.findById(id);

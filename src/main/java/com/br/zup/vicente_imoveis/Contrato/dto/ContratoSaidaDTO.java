@@ -19,4 +19,12 @@ public class ContratoSaidaDTO {
     private StatusDoContrato statusDoContrato;
     private LocalDate dataDoContrato;
 
+    public ContratoSaidaDTO(int id, Imovel imovel, Cliente cliente, StatusDoContrato statusDoContrato,
+                            LocalDate dataDoContrato) {
+        this.id = id;
+        this.imovel = imovel;
+        this.cliente = cliente;
+        this.statusDoContrato = statusDoContrato;
+        this.dataDoContrato = dataDoContrato;
+    }
 }
