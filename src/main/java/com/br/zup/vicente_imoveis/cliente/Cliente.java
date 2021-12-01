@@ -16,7 +16,9 @@ public class Cliente {
 
     @Id
     private String cpf;
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String telefone;
 
 }
