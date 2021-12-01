@@ -1,9 +1,9 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
-import com.br.zup.vicente_imoveis.Endereco.EnderecoRepository;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
+import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,7 @@ public class ImovelService {
 
     @Autowired
     ImovelRepository imovelRepository;
-    @Autowired
-    EnderecoRepository enderecoRepository;
+
     @Autowired
     EnderecoService enderecoService;
 
@@ -24,7 +23,7 @@ public class ImovelService {
         if (enderecoService.enderecoExiste(imovel.getEndereco())){
             throw new RuntimeException("Imóvel já consta no banco de dados");
         }
-//        enderecoRepository.save(imovel.getEndereco());
+        enderecoService.salvarEndereco(imovel.getEndereco());
         imovel.setStatusImovel(StatusImovel.DISPONIVEL);
         return imovelRepository.save(imovel);
     }
@@ -62,6 +61,25 @@ public class ImovelService {
         imovelRepository.save(imovelParaAtualizar);
         return imovelParaAtualizar;
 
+    }
+
+    public List<Imovel> aplicarFiltroParaBusca(TipoDeContrato tipoDeContrato, String tipoDeImovel,
+                                               StatusImovel statusImovel, Double valor){
+        if (tipoDeContrato != null){
+            return imovelRepository.findAllByTipoDeContrato(tipoDeContrato);
+        }
+        else if (tipoDeImovel != null){
+            return imovelRepository.findAllByTipoDeImovel(tipoDeImovel);
+        }
+        else if (statusImovel != null){
+            return imovelRepository.findAllByStatusImovel(statusImovel);
+        }
+        else if (valor != null){
+            return imovelRepository.findAllByValor(valor);
+
+        }
+
+        return exibirImoveisCadastrados();
     }
 
 }
