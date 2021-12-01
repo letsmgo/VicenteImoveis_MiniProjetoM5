@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class ContratoService {
@@ -38,6 +39,27 @@ public class ContratoService {
         contrato.setStatusDoContrato(StatusDoContrato.ATIVO);
         return contratoRepository.save(contrato);
     }
+
+
+
+
+
+
+
+
+    public Contrato localizarContratoPorId(int id){
+        Optional<Contrato> contratoOptional = contratoRepository.findById(id);
+        if (contratoOptional.isEmpty()){
+            throw new RuntimeException("Contrato não encontrado");
+        }
+        return contratoOptional.get();
+    }
+
+
+
+
+
+
 
 
 }
