@@ -22,13 +22,13 @@ public class ContratoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ContratoSaidaDTO salvarContrato(@RequestBody ContratoEntradaDTO contratoEntradaDTO){
+    public ContratoSaidaDTO salvarContrato(@RequestBody ContratoEntradaDTO contratoEntradaDTO) {
         Contrato contrato = contratoService.salvarContrato(contratoEntradaDTO.getId_imovel(),
                 contratoEntradaDTO.getId_morador());
         return modelMapper.map(contrato, ContratoSaidaDTO.class);
     }
 
-    @GetMapping
+ @GetMapping
     public List<ContratoSaidaDTO> exibirContratos() {
         List<ContratoSaidaDTO> contratosDTO = new ArrayList<>();
         for (Contrato contrato : contratoService.exibirContratosCadastrados()) {
@@ -38,5 +38,12 @@ public class ContratoController {
         return contratosDTO;
     }
 
+    @PutMapping(path = {("/{id}")})
+    public ContratoSaidaDTO encerrarContrato(@PathVariable int id) {
+        return modelMapper.map((contratoService.atualizarContrato(id)), ContratoSaidaDTO.class);
+    }
 
 }
+
+
+
