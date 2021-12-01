@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/contratos")
 public class ContratoController {
@@ -24,5 +27,16 @@ public class ContratoController {
                 contratoEntradaDTO.getId_morador());
         return modelMapper.map(contrato, ContratoSaidaDTO.class);
     }
+
+    @GetMapping
+    public List<ContratoSaidaDTO> exibirContratos() {
+        List<ContratoSaidaDTO> contratosDTO = new ArrayList<>();
+        for (Contrato contrato : contratoService.exibirContratosCadastrados()) {
+            ContratoSaidaDTO contratoDTO = modelMapper.map(contrato, ContratoSaidaDTO.class);
+            contratosDTO.add(contratoDTO);
+        }
+        return contratosDTO;
+    }
+
 
 }
