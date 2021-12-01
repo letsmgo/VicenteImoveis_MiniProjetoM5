@@ -2,7 +2,7 @@ package com.br.zup.vicente_imoveis.Contrato;
 
 import com.br.zup.vicente_imoveis.Contrato.Enums.StatusDoContrato;
 import com.br.zup.vicente_imoveis.Imovel.Imovel;
-import com.br.zup.vicente_imoveis.cliente.Cliente;
+import com.br.zup.vicente_imoveis.Cliente.Cliente;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

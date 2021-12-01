@@ -2,6 +2,7 @@ package com.br.zup.vicente_imoveis.Imovel;
 
 import com.br.zup.vicente_imoveis.Endereco.EnderecoRepository;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
+import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class ImovelService {
         if (enderecoService.enderecoExiste(imovel.getEndereco())){
             throw new RuntimeException("Imóvel já consta no banco de dados");
         }
-        enderecoRepository.save(imovel.getEndereco());
+//        enderecoRepository.save(imovel.getEndereco());
         imovel.setStatusImovel(StatusImovel.DISPONIVEL);
         return imovelRepository.save(imovel);
     }
