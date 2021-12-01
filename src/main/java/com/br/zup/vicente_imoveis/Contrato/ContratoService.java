@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.List;
 
@@ -42,9 +43,21 @@ public class ContratoService {
         return contratoRepository.save(contrato);
     }
 
-    public List<Contrato> exibirContratosCadastrados(){
-        Iterable<Contrato> contratos = contratoRepository.findAll();
-        return (List<Contrato>) contratos;
+    public List<Contrato> exibirContratosCadastrados(String cpf, StatusDoContrato statusDoContrato, Integer idImovel){
+        Iterable<Contrato> contratosIterable = contratoRepository.findAll();
+        List<Contrato> contratosDoBanco = (List<Contrato>) contratosIterable;
+        List<Contrato> contratos = new ArrayList<>();
+
+        for (Contrato contrato : contratosDoBanco) {
+            if (cpf != null && contrato.getCliente().getCpf().equals(cpf)) {
+                contratos.add(contrato);
+            } else if (statusDoContrato != null && contrato.getStatusDoContrato().equals(statusDoContrato)) {
+                contratos.add(contrato);
+            } else if (idImovel != null && contrato.getImovel().getId() == idImovel) {
+                contratos.add(contrato);
+            }
+        }
+        return contratos;
     }
 
     public Contrato localizarContratoPorId(int id){
