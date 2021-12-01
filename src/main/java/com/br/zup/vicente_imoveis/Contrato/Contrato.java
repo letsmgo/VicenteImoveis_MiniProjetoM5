@@ -26,5 +26,6 @@ public class Contrato {
     private Cliente cliente;
     private StatusDoContrato statusDoContrato;
     private LocalDate dataDoContrato;
+    private LocalDate dataTerminoContrato;
 
 }
