@@ -46,7 +46,6 @@ public class ContratoService {
 
 
 
-
     public Contrato localizarContratoPorId(int id){
         Optional<Contrato> contratoOptional = contratoRepository.findById(id);
         if (contratoOptional.isEmpty()){
@@ -55,11 +54,17 @@ public class ContratoService {
         return contratoOptional.get();
     }
 
-
-
-
-
-
-
+    public Contrato atualizarContrato(int id){
+        Contrato contrato = localizarContratoPorId(id);
+        if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.ALUGUEL)){
+            contrato.setStatusDoContrato(StatusDoContrato.INATIVO);
+            contrato.getImovel().setStatusImovel(StatusImovel.DISPONIVEL);
+            contrato.setDataTerminoContrato(LocalDate.now());
+            contratoRepository.save(contrato);
+        }else if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.VENDA)){
+            throw new RuntimeException("Não é possível encerrar um contrato de venda");
+        }
+        return contrato;
+    }
 
 }
