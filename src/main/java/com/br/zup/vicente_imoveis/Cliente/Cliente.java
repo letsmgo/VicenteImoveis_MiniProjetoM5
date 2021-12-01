@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.cliente;
+package com.br.zup.vicente_imoveis.Cliente;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

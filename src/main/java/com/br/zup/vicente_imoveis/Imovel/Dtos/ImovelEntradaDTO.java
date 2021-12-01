@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Imovel;
+package com.br.zup.vicente_imoveis.Imovel.Dtos;
 
 import com.br.zup.vicente_imoveis.Endereco.Endereco;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
