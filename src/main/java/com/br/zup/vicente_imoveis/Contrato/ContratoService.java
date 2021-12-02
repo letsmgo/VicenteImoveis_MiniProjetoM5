@@ -1,6 +1,7 @@
 package com.br.zup.vicente_imoveis.Contrato;
 
 import com.br.zup.vicente_imoveis.Contrato.Enums.StatusDoContrato;
+import com.br.zup.vicente_imoveis.Endereco.Endereco;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import com.br.zup.vicente_imoveis.Imovel.Imovel;
@@ -43,39 +44,44 @@ public class ContratoService {
         return contratoRepository.save(contrato);
     }
 
-    public List<Contrato> exibirContratosCadastrados(String cpf, StatusDoContrato statusDoContrato, Integer idImovel){
-        Iterable<Contrato> contratosIterable = contratoRepository.findAll();
-        List<Contrato> contratosDoBanco = (List<Contrato>) contratosIterable;
-        List<Contrato> contratos = new ArrayList<>();
+    public List<Contrato> exibirContratosCadastrados(String cpf, StatusDoContrato statusDoContrato, Integer idImovel) {
 
-        for (Contrato contrato : contratosDoBanco) {
-            if (cpf != null && contrato.getCliente().getCpf().equals(cpf)) {
-                contratos.add(contrato);
-            } else if (statusDoContrato != null && contrato.getStatusDoContrato().equals(statusDoContrato)) {
-                contratos.add(contrato);
-            } else if (idImovel != null && contrato.getImovel().getId() == idImovel) {
-                contratos.add(contrato);
-            }
+        if (cpf != null && idImovel != null && statusDoContrato != null) {
+            return contratoRepository.findAllByStatusDoContratoEClienteCpfEImovelId(statusDoContrato.toString(),
+                    cpf,idImovel);
+        } else if (cpf != null && idImovel != null) {
+            return contratoRepository.findAllByClienteCpfEImovelId(cpf,idImovel);
+        }else if (cpf != null && statusDoContrato != null) {
+            return contratoRepository.findAllByStatusDoContratoEClienteCpf(statusDoContrato, cpf);
+        }else if (cpf != null) {
+            return contratoRepository.findAllByClienteCpf(cpf);
+        } else if (idImovel != null && statusDoContrato != null) {
+            return contratoRepository.findAllByStatusDoContratoEImovelId(statusDoContrato, idImovel);
+        }else if (statusDoContrato != null) {
+            return contratoRepository.findAllByStatusDoContrato(statusDoContrato);
+        } else if (idImovel != null) {
+            return contratoRepository.findAllByImovelId(idImovel);
         }
-        return contratos;
+        Iterable<Contrato> contratos = contratoRepository.findAll();
+        return (List<Contrato>) contratos;
     }
 
-    public Contrato localizarContratoPorId(int id){
+    public Contrato localizarContratoPorId(int id) {
         Optional<Contrato> contratoOptional = contratoRepository.findById(id);
-        if (contratoOptional.isEmpty()){
+        if (contratoOptional.isEmpty()) {
             throw new RuntimeException("Contrato não encontrado");
         }
         return contratoOptional.get();
     }
 
-    public Contrato atualizarContrato(int id){
+    public Contrato atualizarContrato(int id) {
         Contrato contrato = localizarContratoPorId(id);
-        if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.ALUGUEL)){
+        if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.ALUGUEL)) {
             contrato.setStatusDoContrato(StatusDoContrato.INATIVO);
             contrato.getImovel().setStatusImovel(StatusImovel.DISPONIVEL);
             contrato.setDataTerminoContrato(LocalDate.now());
             contratoRepository.save(contrato);
-        }else if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.VENDA)){
+        } else if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.VENDA)) {
             throw new RuntimeException("Não é possível encerrar um contrato de venda");
         }
         return contrato;
