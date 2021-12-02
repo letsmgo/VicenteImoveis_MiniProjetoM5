@@ -22,12 +22,13 @@ public class ImovelEntradaDTO {
     private double valor;
     @NotNull(message = "Adicione o tipo do imovel")
     private String tipoDeImovel;
-    @DecimalMin(value = "0", inclusive = false, message = "Valor abaixo do permitido")
+    @NotNull(message = "A quantidade de banheiros deve ser informada")
     private int qtdBanheiros;
     @Valid
     private Endereco endereco;
-    @DecimalMin(value = "0.0", inclusive = false, message = "Valor abaixo do permitido")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Tamanho abaixo do permitido")
     private double metragem;
+    @NotNull(message = "Informe o tipo de contrato")
     private TipoDeContrato tipoDeContrato;
 
 
