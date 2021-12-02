@@ -16,6 +16,5 @@ public class ClienteSaidaDTO {
     private String cpf;
     private String nome;
     private String telefone;
-    private Date dataDeEntradaNoImovel;
 
 }
