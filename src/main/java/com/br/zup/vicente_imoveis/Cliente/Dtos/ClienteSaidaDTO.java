@@ -1,24 +1,21 @@
-package com.br.zup.vicente_imoveis.cliente;
+package com.br.zup.vicente_imoveis.Cliente.Dtos;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import java.util.Date;
 
-@Entity
-@Table(name = "clientes")
 @RequiredArgsConstructor
 @Getter
 @Setter
-
-public class Cliente {
+public class ClienteSaidaDTO {
 
     @Id
     private String cpf;
-    @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
     private String telefone;
+    private Date dataDeEntradaNoImovel;
 
 }

@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Endereco;
+package com.br.zup.vicente_imoveis.Endereco.Dtos;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

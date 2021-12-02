@@ -1,5 +1,8 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
+import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
+import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelEntradaDTO;
+import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

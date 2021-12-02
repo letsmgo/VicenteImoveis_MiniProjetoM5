@@ -1,5 +1,8 @@
-package com.br.zup.vicente_imoveis.cliente;
+package com.br.zup.vicente_imoveis.Cliente;
 
+import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteAtualizarDTO;
+import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteDTO;
+import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

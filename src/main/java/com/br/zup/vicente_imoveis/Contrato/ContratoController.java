@@ -1,9 +1,7 @@
 package com.br.zup.vicente_imoveis.Contrato;
 
-import com.br.zup.vicente_imoveis.Contrato.dto.ContratoEntradaDTO;
-import com.br.zup.vicente_imoveis.Contrato.dto.ContratoSaidaDTO;
-import com.br.zup.vicente_imoveis.Imovel.ImovelService;
-import com.br.zup.vicente_imoveis.cliente.ClienteService;
+import com.br.zup.vicente_imoveis.Contrato.Dtos.ContratoEntradaDTO;
+import com.br.zup.vicente_imoveis.Contrato.Dtos.ContratoSaidaDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
