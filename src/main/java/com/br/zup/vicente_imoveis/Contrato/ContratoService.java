@@ -101,4 +101,13 @@ public class ContratoService {
         return contratos;
     }
 
+    public List<Contrato> localizarContratosPorCpf(String cpf) {
+        List<Contrato> contrato = contratoRepository.findAllByClienteCpf(cpf);
+        if (contrato.isEmpty()){
+            throw new ContratoNaoEncontradoException("Contrato não encontrado");
+
+        }
+
+        return contrato;
+    }
 }
