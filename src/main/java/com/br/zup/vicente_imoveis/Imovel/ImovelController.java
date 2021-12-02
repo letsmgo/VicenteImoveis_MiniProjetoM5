@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ImovelController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ImovelEntradaDTO cadastrarImovel(@RequestBody ImovelEntradaDTO imovelEntradaDTO){
+    public ImovelEntradaDTO cadastrarImovel(@RequestBody @Valid ImovelEntradaDTO imovelEntradaDTO){
         Imovel imovel = modelMapper.map(imovelEntradaDTO, Imovel.class);
         imovelService.salvarImovel(imovel);
         return imovelEntradaDTO;
@@ -53,7 +54,7 @@ public class ImovelController {
     }
 
     @PutMapping(path = {"/{id}"})
-    public ImovelSaidaDTO atualizarImovel(@PathVariable int id, @RequestBody ImovelAtualizarDTO imovelAtualizarDTO){
+    public ImovelSaidaDTO atualizarImovel(@PathVariable int id, @RequestBody @Valid ImovelAtualizarDTO imovelAtualizarDTO){
         Imovel imovel = imovelService.atualizarImovel(id,imovelAtualizarDTO);
 
         return modelMapper.map(imovel, ImovelSaidaDTO.class);

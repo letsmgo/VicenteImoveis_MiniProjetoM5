@@ -1,5 +1,6 @@
 package com.br.zup.vicente_imoveis.Cliente;
 
+import com.br.zup.vicente_imoveis.Custom_exception.ClienteNaoEncontradoException;
 import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteAtualizarDTO;
 import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteDTO;
 import com.br.zup.vicente_imoveis.Endereco.Endereco;
@@ -31,7 +32,7 @@ public class ClienteService {
     public Cliente buscarClientePorID(String id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if (cliente.isEmpty()) {
-            throw new RuntimeException("Cliente não encontrado");
+            throw new ClienteNaoEncontradoException("Cliente não encontrado");
         }
         return cliente.get();
     }
@@ -43,7 +44,7 @@ public class ClienteService {
     public Cliente atualizarCliente(String cpf, ClienteAtualizarDTO clienteAtualizarDTO){
         Optional<Cliente> cliente = clienteRepository.findById(cpf);
         if (cliente.isEmpty()){
-            throw new RuntimeException("Cliente não cadastrado, por gentileza efetue o cadastro primeiro.");
+            throw new ClienteNaoEncontradoException("Cliente não cadastrado, por gentileza efetue o cadastro primeiro.");
 
         }
         Cliente clienteParaAtualizar = cliente.get();
