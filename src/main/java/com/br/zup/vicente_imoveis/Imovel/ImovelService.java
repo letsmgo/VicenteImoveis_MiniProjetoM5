@@ -1,5 +1,7 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
+import com.br.zup.vicente_imoveis.Custom_exception.ImovelCadastradoExeception;
+import com.br.zup.vicente_imoveis.Custom_exception.ImovelNaoCadastradoException;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoRepository;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
@@ -21,7 +23,7 @@ public class ImovelService {
 
     public Imovel salvarImovel(Imovel imovel){
         if (enderecoService.enderecoExiste(imovel.getEndereco())){
-            throw new RuntimeException("Imóvel já consta no banco de dados");
+            throw new ImovelCadastradoExeception("Imóvel já consta no banco de dados");
         }
         enderecoRepository.save(imovel.getEndereco());
         imovel.setStatusImovel(StatusImovel.DISPONIVEL);
@@ -36,7 +38,7 @@ public class ImovelService {
     public Imovel buscarImovelPorID(int id){
         Optional<Imovel> imovel=imovelRepository.findById(id);
         if (imovel.isEmpty()){
-            throw new RuntimeException("Imovel não encontrado");
+            throw new ImovelNaoCadastradoException("Imovel não encontrado");
         }
         return imovel.get();
     }
@@ -48,7 +50,7 @@ public class ImovelService {
     public Imovel atualizarImovel(int id, ImovelAtualizarDTO imovelEntrada){
         Optional<Imovel> imovel = imovelRepository.findById(id);
         if (imovel.isEmpty()){
-            throw new RuntimeException("Imóvel não cadastrado, por gentileza efetue o cadastro primeiro.");
+            throw new ImovelNaoCadastradoException("Imóvel não cadastrado, por gentileza efetue o cadastro primeiro.");
         }
 
         Imovel imovelParaAtualizar = imovel.get();
