@@ -5,6 +5,8 @@ import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelEntradaDTO;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelSaidaDTO;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/imoveis")
+@Api(value = "Gerenciador de imoveis")
+@CrossOrigin(origins = "*")
 public class ImovelController {
 
     @Autowired
@@ -24,6 +28,7 @@ public class ImovelController {
     ModelMapper modelMapper;
 
     @PostMapping
+    @ApiOperation(value = "Cadastrar imovel")
     @ResponseStatus(HttpStatus.CREATED)
     public ImovelEntradaDTO cadastrarImovel(@RequestBody @Valid ImovelEntradaDTO imovelEntradaDTO){
         Imovel imovel = modelMapper.map(imovelEntradaDTO, Imovel.class);
@@ -32,6 +37,7 @@ public class ImovelController {
     }
 
     @GetMapping
+    @ApiOperation(value = "Exibir lista de imoveis")
     public List<ImovelSaidaDTO> exibirImoveis(@RequestParam(required = false)TipoDeContrato tipoDeContrato,
                                               @RequestParam(required = false)String tipoDeImovel,
                                               @RequestParam(required = false)StatusImovel statusImovel,
@@ -46,18 +52,21 @@ public class ImovelController {
     }
 
     @GetMapping(path = {("/{id}")})
+    @ApiOperation(value = "Exibir imovel")
     public ImovelSaidaDTO exibirImovel (@PathVariable int id){
         Imovel imovel= imovelService.buscarImovelPorID(id);
         return modelMapper.map(imovel,ImovelSaidaDTO.class);
     }
 
     @DeleteMapping(path = {"/{id}"})
+    @ApiOperation(value = "Deletar imovel")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarImovel(@PathVariable int id){
         imovelService.deletarImovel(id);
     }
 
     @PutMapping(path = {"/{id}"})
+    @ApiOperation(value = "Atualizar imovel")
     public ImovelSaidaDTO atualizarImovel(@PathVariable int id, @RequestBody @Valid ImovelAtualizarDTO imovelAtualizarDTO){
         Imovel imovel = imovelService.atualizarImovel(id,imovelAtualizarDTO);
 

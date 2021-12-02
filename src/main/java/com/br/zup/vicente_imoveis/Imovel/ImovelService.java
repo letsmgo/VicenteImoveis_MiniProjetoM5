@@ -1,8 +1,11 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
 
+import com.br.zup.vicente_imoveis.Contrato.Contrato;
+import com.br.zup.vicente_imoveis.Contrato.ContratoService;
 import com.br.zup.vicente_imoveis.Custom_exception.ImovelCadastradoException;
 import com.br.zup.vicente_imoveis.Custom_exception.ImovelNaoCadastradoException;
+import com.br.zup.vicente_imoveis.Custom_exception.VinculoContratualException;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
@@ -20,6 +23,8 @@ public class ImovelService {
     ImovelRepository imovelRepository;
     @Autowired
     EnderecoService enderecoService;
+    @Autowired
+    ContratoService contratoService;
 
     public Imovel salvarImovel(Imovel imovel){
         if (enderecoService.enderecoExiste(imovel.getEndereco())){
@@ -44,7 +49,12 @@ public class ImovelService {
     }
 
     public void deletarImovel(int id){
-        imovelRepository.deleteById(id);
+        Imovel imovel = buscarImovelPorID(id);
+        List <Contrato> contratos = contratoService.buscarContratoPorEndereco(imovel.getEndereco());
+        if (contratos.isEmpty()){
+            imovelRepository.deleteById(id);
+        }
+        throw new VinculoContratualException("Impossível deletar pois possui vínculo contratual");
     }
 
     public Imovel atualizarImovel(int id, ImovelAtualizarDTO imovelEntrada){

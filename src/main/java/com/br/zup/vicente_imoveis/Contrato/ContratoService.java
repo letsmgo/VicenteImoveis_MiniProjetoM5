@@ -101,6 +101,7 @@ public class ContratoService {
         return contratos;
     }
 
+
     public List<Contrato> localizarContratosPorCpf(String cpf) {
         List<Contrato> contrato = contratoRepository.findAllByClienteCpf(cpf);
         if (contrato.isEmpty()){
@@ -110,4 +111,5 @@ public class ContratoService {
 
         return contrato;
     }
+
 }

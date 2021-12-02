@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -18,16 +21,25 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
+    @NotBlank(message = "O cep não pode ser vazio")
     private String cep;
     @Column(nullable = false)
+    @NotBlank(message = "Informe o logradouro com o nome")
     private String logradouro;
     @Column(nullable = false)
+    @NotNull(message = "Informe o número do endereço")
+    @Min(value = 1)
     private int numero;
     @Column(columnDefinition = "VARCHAR(50) default 'NT'")
     private String complemento;
     @Column(nullable = false)
+    @NotBlank(message = "Informe o nome do bairro")
+    private String bairro;
+    @Column(nullable = false)
+    @NotBlank(message = "Informe o nome da cidade")
     private String cidade;
     @Column(nullable = false)
+    @NotBlank(message = "Informe o Nome do Estado")
     private String estado;
 
     @Override

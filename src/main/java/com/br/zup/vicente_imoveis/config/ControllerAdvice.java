@@ -68,12 +68,12 @@ public class ControllerAdvice {
         return new ErroDeValidacao(cpfJaCadastradoException.getMessage());
     }
 
-
-
-
-
-
-
+    @ExceptionHandler(VinculoContratualException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErroDeValidacao tratarVinculoContratualException(
+            VinculoContratualException exception) {
+        return new ErroDeValidacao(exception.getMessage());
+    }
 
     @ExceptionHandler(VinculoContratualClienteException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -81,4 +81,5 @@ public class ControllerAdvice {
             VinculoContratualClienteException vinculoContratualClienteException) {
         return new ErroDeValidacao(vinculoContratualClienteException.getMessage());
     }
+
 }
