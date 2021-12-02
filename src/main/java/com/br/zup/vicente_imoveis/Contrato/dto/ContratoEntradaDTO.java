@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContratoEntradaDTO {
+
     private int id_imovel;
     private String id_morador;
 }
