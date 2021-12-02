@@ -8,16 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ErroDeValidacao {
-    private String campo;
     private String mensagem;
 
-    public ErroDeValidacao(String campo, String mensagem) {
-        this.campo = campo;
+    public ErroDeValidacao( String mensagem) {
         this.mensagem = mensagem;
-
     }
 
-    public ErroDeValidacao(String defautMessage){
-
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 }
