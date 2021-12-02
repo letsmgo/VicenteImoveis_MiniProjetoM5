@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ContratoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ContratoSaidaDTO salvarContrato(@RequestBody ContratoEntradaDTO contratoEntradaDTO) {
+    public ContratoSaidaDTO salvarContrato(@RequestBody @Valid ContratoEntradaDTO contratoEntradaDTO) {
         Contrato contrato = contratoService.salvarContrato(contratoEntradaDTO.getId_imovel(),
                 contratoEntradaDTO.getId_morador());
         return modelMapper.map(contrato, ContratoSaidaDTO.class);
