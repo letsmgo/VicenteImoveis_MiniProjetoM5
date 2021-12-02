@@ -47,18 +47,25 @@ public class ControllerAdvice {
         return new ErroDeValidacao(imovelNaoCadastradoException.getMessage());
     }
 
-    @ExceptionHandler(ImovelCadastradoExeception.class)
+    @ExceptionHandler(ImovelCadastradoException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErroDeValidacao tratarImovelCadastradoExeception(
-            ImovelCadastradoExeception imovelCadastradoException) {
+            ImovelCadastradoException imovelCadastradoException) {
         return new ErroDeValidacao(imovelCadastradoException.getMessage());
     }
 
-    @ExceptionHandler(TipoDeContratoIndelevelExeception.class)
+    @ExceptionHandler(TipoDeContratoIndelevelException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErroDeValidacao tratarTipoDeContratoIndelevelExeception(
-            TipoDeContratoIndelevelExeception tipoDeContratoIndelevelExeception) {
+            TipoDeContratoIndelevelException tipoDeContratoIndelevelExeception) {
         return new ErroDeValidacao(tipoDeContratoIndelevelExeception.getMessage());
+    }
+
+    @ExceptionHandler(CpfJaCadastradoException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErroDeValidacao CpfJaCadastradoException(
+            CpfJaCadastradoException cpfJaCadastradoException) {
+        return new ErroDeValidacao(cpfJaCadastradoException.getMessage());
     }
 
 }

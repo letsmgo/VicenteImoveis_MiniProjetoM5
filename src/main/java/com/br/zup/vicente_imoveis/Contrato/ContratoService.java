@@ -2,7 +2,7 @@ package com.br.zup.vicente_imoveis.Contrato;
 
 import com.br.zup.vicente_imoveis.Contrato.Enums.StatusDoContrato;
 import com.br.zup.vicente_imoveis.Custom_exception.ContratoNaoEncontradoException;
-import com.br.zup.vicente_imoveis.Custom_exception.TipoDeContratoIndelevelExeception;
+import com.br.zup.vicente_imoveis.Custom_exception.TipoDeContratoIndelevelException;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import com.br.zup.vicente_imoveis.Imovel.Imovel;
@@ -65,7 +65,7 @@ public class ContratoService {
             contrato.setDataTerminoContrato(LocalDate.now());
             contratoRepository.save(contrato);
         }else if (contrato.getImovel().getTipoDeContrato().equals(TipoDeContrato.VENDA)){
-            throw new TipoDeContratoIndelevelExeception("Não é possível encerrar um contrato de venda");
+            throw new TipoDeContratoIndelevelException("Não é possível encerrar um contrato de venda");
         }
         return contrato;
 
