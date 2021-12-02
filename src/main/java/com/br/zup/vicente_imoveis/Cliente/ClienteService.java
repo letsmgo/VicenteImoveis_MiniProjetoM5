@@ -1,8 +1,11 @@
 package com.br.zup.vicente_imoveis.Cliente;
 
+import com.br.zup.vicente_imoveis.Contrato.Contrato;
+import com.br.zup.vicente_imoveis.Contrato.ContratoService;
 import com.br.zup.vicente_imoveis.Custom_exception.ClienteNaoEncontradoException;
 import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteAtualizarDTO;
 import com.br.zup.vicente_imoveis.Custom_exception.CpfJaCadastradoException;
+import com.br.zup.vicente_imoveis.Custom_exception.VinculoContratualClienteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ import java.util.Optional;
 public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
+
+    @Autowired
+    ContratoService contratoService;
 
     public Cliente salvarCliente(Cliente cliente) {
         if (cpfJaExiste(cliente)){
@@ -37,7 +43,15 @@ public class ClienteService {
     }
 
     public void deletarCliente(String cpf) {
-        clienteRepository.deleteById(cpf);
+        Cliente cliente = buscarClientePorID(cpf);
+        List<Contrato> contrato = contratoService.localizarContratosPorCpf(cpf);
+        if (contrato.isEmpty()) {
+            clienteRepository.deleteById(cpf);
+        } else {
+            throw new VinculoContratualClienteException("Cliente não pode ser deletado pois possui vínculo contratual.");
+
+        }
+
     }
 
     public Cliente atualizarCliente(String cpf, ClienteAtualizarDTO clienteAtualizarDTO){
