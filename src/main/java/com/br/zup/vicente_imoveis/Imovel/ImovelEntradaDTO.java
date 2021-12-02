@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -23,6 +24,7 @@ public class ImovelEntradaDTO {
     private String tipoDeImovel;
     @DecimalMin(value = "0", inclusive = false, message = "Valor abaixo do permitido")
     private int qtdBanheiros;
+    @Valid
     private Endereco endereco;
     @DecimalMin(value = "0.0", inclusive = false, message = "Valor abaixo do permitido")
     private double metragem;

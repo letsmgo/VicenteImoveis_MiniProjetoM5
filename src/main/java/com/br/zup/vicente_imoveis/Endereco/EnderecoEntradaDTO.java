@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class EnderecoEntradaDTO {
     @NotBlank(message = "Informe o logradouro com o nome")
     private String logradouro;
     @NotBlank(message = "Informe o número do endereço")
-    @DecimalMin(value = "0.0", inclusive = false, message = "Valor abaixo do permitido")
+    @Min(value = 1)
     private int numero;
     private String complemento;
     @NotBlank(message = "Informe o nome do bairro")

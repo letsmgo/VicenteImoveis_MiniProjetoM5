@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "imoveis")
@@ -30,6 +31,7 @@ public class Imovel {
     private Endereco endereco;
     @Column(nullable = false)
     private double metragem;
+    @Column(nullable = false)
     private TipoDeContrato tipoDeContrato;
     @Column(nullable = false)
     private StatusImovel statusImovel;
