@@ -24,6 +24,7 @@ public class Contrato {
     private Imovel imovel;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Cliente cliente;
+    @Enumerated(EnumType.STRING)
     private StatusDoContrato statusDoContrato;
     private LocalDate dataDoContrato;
     private LocalDate dataTerminoContrato;

@@ -1,10 +1,12 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
+
 import com.br.zup.vicente_imoveis.Custom_exception.ImovelCadastradoException;
 import com.br.zup.vicente_imoveis.Custom_exception.ImovelNaoCadastradoException;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
+import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,6 +63,25 @@ public class ImovelService {
         imovelRepository.save(imovelParaAtualizar);
         return imovelParaAtualizar;
 
+    }
+
+    public List<Imovel> aplicarFiltroParaBusca(TipoDeContrato tipoDeContrato, String tipoDeImovel,
+                                               StatusImovel statusImovel, Double valor){
+        if (tipoDeContrato != null){
+            return imovelRepository.findAllByTipoDeContrato(tipoDeContrato);
+        }
+        else if (tipoDeImovel != null){
+            return imovelRepository.findAllByTipoDeImovel(tipoDeImovel);
+        }
+        else if (statusImovel != null){
+            return imovelRepository.findAllByStatusImovel(statusImovel);
+        }
+        else if (valor != null){
+            return imovelRepository.findAllByValor(valor);
+
+        }
+
+        return exibirImoveisCadastrados();
     }
 
 }

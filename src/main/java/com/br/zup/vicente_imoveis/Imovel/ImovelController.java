@@ -3,6 +3,8 @@ package com.br.zup.vicente_imoveis.Imovel;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelAtualizarDTO;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelEntradaDTO;
 import com.br.zup.vicente_imoveis.Imovel.Dtos.ImovelSaidaDTO;
+import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
+import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,15 +32,17 @@ public class ImovelController {
     }
 
     @GetMapping
-    public List<ImovelSaidaDTO> exibirImoveis(){
-        List<ImovelSaidaDTO> imoveisDTO = new ArrayList<>();
+    public List<ImovelSaidaDTO> exibirImoveis(@RequestParam(required = false)TipoDeContrato tipoDeContrato,
+                                              @RequestParam(required = false)String tipoDeImovel,
+                                              @RequestParam(required = false)StatusImovel statusImovel,
+                                              @RequestParam(required = false) Double valor){
+        List<ImovelSaidaDTO> imovelSaidaDTOS = new ArrayList<>();
+        for (Imovel imovel : imovelService.aplicarFiltroParaBusca(tipoDeContrato, tipoDeImovel, statusImovel,valor)){
+            ImovelSaidaDTO exibirImoveisDaBusca = modelMapper.map(imovel, ImovelSaidaDTO.class);
+            imovelSaidaDTOS.add(exibirImoveisDaBusca);
 
-        for (Imovel imovel: imovelService.exibirImoveisCadastrados()){
-            ImovelSaidaDTO imovelDTO = new ImovelSaidaDTO(imovel.getId(), imovel.getValor(), imovel.getTipoDeImovel(), imovel.getQtdBanheiros(), imovel.getEndereco(), imovel.getMetragem(),
-                    imovel.getTipoDeContrato());
-            imoveisDTO.add(imovelDTO);
         }
-        return imoveisDTO;
+        return imovelSaidaDTOS;
     }
 
     @GetMapping(path = {("/{id}")})
