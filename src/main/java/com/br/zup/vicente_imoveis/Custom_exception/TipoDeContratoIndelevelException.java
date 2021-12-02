@@ -1,8 +1,8 @@
 package com.br.zup.vicente_imoveis.Custom_exception;
 
-public class TipoDeContratoIndelevelExeception extends RuntimeException{
+public class TipoDeContratoIndelevelException extends RuntimeException{
 
-    public TipoDeContratoIndelevelExeception(String message) {
+    public TipoDeContratoIndelevelException(String message) {
         super(message);
     }
 

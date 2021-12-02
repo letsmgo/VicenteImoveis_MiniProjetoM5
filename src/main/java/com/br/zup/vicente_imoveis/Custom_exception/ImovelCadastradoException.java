@@ -1,8 +1,8 @@
 package com.br.zup.vicente_imoveis.Custom_exception;
 
-public class ImovelCadastradoExeception extends RuntimeException{
+public class ImovelCadastradoException extends RuntimeException{
 
-    public ImovelCadastradoExeception(String message) {
+    public ImovelCadastradoException(String message) {
         super(message);
     }
 
