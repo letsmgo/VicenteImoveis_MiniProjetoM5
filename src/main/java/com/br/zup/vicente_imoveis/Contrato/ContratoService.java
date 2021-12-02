@@ -1,12 +1,12 @@
 package com.br.zup.vicente_imoveis.Contrato;
 
-import com.br.zup.vicente_imoveis.Contrato.enun.StatusDoContrato;
+import com.br.zup.vicente_imoveis.Contrato.Enums.StatusDoContrato;
 import com.br.zup.vicente_imoveis.Imovel.Enums.StatusImovel;
 import com.br.zup.vicente_imoveis.Imovel.Enums.TipoDeContrato;
 import com.br.zup.vicente_imoveis.Imovel.Imovel;
 import com.br.zup.vicente_imoveis.Imovel.ImovelService;
-import com.br.zup.vicente_imoveis.cliente.Cliente;
-import com.br.zup.vicente_imoveis.cliente.ClienteService;
+import com.br.zup.vicente_imoveis.Cliente.Cliente;
+import com.br.zup.vicente_imoveis.Cliente.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

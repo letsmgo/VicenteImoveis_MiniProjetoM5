@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.Contrato.dto;
+package com.br.zup.vicente_imoveis.Contrato.Dtos;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.br.zup.vicente_imoveis.componentes;
+package com.br.zup.vicente_imoveis.Componentes;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

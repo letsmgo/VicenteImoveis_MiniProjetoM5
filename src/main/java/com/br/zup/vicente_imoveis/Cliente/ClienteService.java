@@ -1,9 +1,13 @@
-package com.br.zup.vicente_imoveis.cliente;
+package com.br.zup.vicente_imoveis.Cliente;
 
+import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteAtualizarDTO;
+import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteDTO;
+import com.br.zup.vicente_imoveis.Endereco.Endereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -12,7 +16,11 @@ public class ClienteService {
     ClienteRepository clienteRepository;
 
     public Cliente salvarCliente(Cliente cliente) {
+        if (cpfJaExiste(cliente)){
+            throw new RuntimeException("CPF já consta no banco de dados, tente acessar as informações do mesmo.");
+        }
         return clienteRepository.save(cliente);
+
     }
 
     public List<Cliente> exibirClientesCadastrados() {
@@ -46,5 +54,18 @@ public class ClienteService {
         return clienteParaAtualizar;
 
     }
+
+
+    public boolean cpfJaExiste(Cliente clienteEntrada){
+        boolean cpfExiste = false;
+        for (Cliente cliente: exibirClientesCadastrados()) {
+            if (cliente.getCpf().equalsIgnoreCase(clienteEntrada.getCpf())
+                    && cliente.getNome().equalsIgnoreCase(clienteEntrada.getNome())
+                        && Objects.equals(cliente.getTelefone(), clienteEntrada.getTelefone())){
+                    cpfExiste = true;
+                }
+            }
+        return cpfExiste;
+        }
 
 }
