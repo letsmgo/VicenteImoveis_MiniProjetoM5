@@ -101,4 +101,8 @@ public class ContratoService {
         return contratos;
     }
 
+    public List<Contrato>buscarContratoPorCpf(String cpf){
+        return contratoRepository.findAllByClienteCpf(cpf);
+    }
+
 }
