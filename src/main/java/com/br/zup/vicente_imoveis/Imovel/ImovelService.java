@@ -1,6 +1,6 @@
 package com.br.zup.vicente_imoveis.Imovel;
 
-import com.br.zup.vicente_imoveis.Custom_exception.ImovelCadastradoExeception;
+import com.br.zup.vicente_imoveis.Custom_exception.ImovelCadastradoException;
 import com.br.zup.vicente_imoveis.Custom_exception.ImovelNaoCadastradoException;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoRepository;
 import com.br.zup.vicente_imoveis.Endereco.EnderecoService;
@@ -24,7 +24,7 @@ public class ImovelService {
 
     public Imovel salvarImovel(Imovel imovel){
         if (enderecoService.enderecoExiste(imovel.getEndereco())){
-            throw new ImovelCadastradoExeception("Imóvel já consta no banco de dados");
+            throw new ImovelCadastradoException("Imóvel já consta no banco de dados");
         }
 //        enderecoRepository.save(imovel.getEndereco());
         imovel.setStatusImovel(StatusImovel.DISPONIVEL);
