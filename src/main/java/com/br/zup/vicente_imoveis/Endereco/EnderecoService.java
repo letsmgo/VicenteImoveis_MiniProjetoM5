@@ -23,9 +23,7 @@ public class EnderecoService {
     public boolean enderecoExiste(Endereco enderecoEntrada) {
         boolean enderecoexiste = false;
         for (Endereco endereco : exibirEnderecosCadastrados()) {
-            if (endereco.getCep().equals(enderecoEntrada.getCep())
-                    && endereco.getLogradouro().equals(enderecoEntrada.getLogradouro())
-                    && endereco.getNumero() == enderecoEntrada.getNumero()) {
+            if (enderecoEntrada.equals(endereco)){
                 enderecoexiste = true;
             }
         }
