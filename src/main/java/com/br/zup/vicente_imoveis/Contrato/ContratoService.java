@@ -87,4 +87,15 @@ public class ContratoService {
         return contrato;
     }
 
+    public List<Contrato> buscarContratoPorEndereco(Endereco endereco) {
+        List<Contrato> contratos = new ArrayList<>();
+
+        for (Contrato contrato : contratoRepository.findAll()) {
+            if (contrato.getImovel().getEndereco().equals(endereco)) {
+                contratos.add(contrato);
+            }
+        }
+        return contratos;
+    }
+
 }
