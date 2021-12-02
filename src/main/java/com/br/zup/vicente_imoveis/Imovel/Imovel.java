@@ -20,13 +20,17 @@ public class Imovel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private double valor;
+    @Column(nullable = false)
     private String tipoDeImovel;
+    @Column(nullable = false)
     private int qtdBanheiros;
     @OneToOne
     private Endereco endereco;
+    @Column(nullable = false)
     private double metragem;
     private TipoDeContrato tipoDeContrato;
+    @Column(nullable = false)
     private StatusImovel statusImovel;
-
 }
