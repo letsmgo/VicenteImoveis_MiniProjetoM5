@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDTO cadastrarCliente(@RequestBody ClienteDTO clienteDTO) {
+    public ClienteDTO cadastrarCliente(@RequestBody @Valid ClienteDTO clienteDTO) {
         Cliente cliente = modelMapper.map(clienteDTO, Cliente.class);
         clienteService.salvarCliente(cliente);
         return clienteDTO;
