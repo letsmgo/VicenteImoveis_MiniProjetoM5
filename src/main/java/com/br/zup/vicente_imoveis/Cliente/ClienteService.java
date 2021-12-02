@@ -2,8 +2,7 @@ package com.br.zup.vicente_imoveis.Cliente;
 
 import com.br.zup.vicente_imoveis.Custom_exception.ClienteNaoEncontradoException;
 import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteAtualizarDTO;
-import com.br.zup.vicente_imoveis.Cliente.Dtos.ClienteDTO;
-import com.br.zup.vicente_imoveis.Endereco.Endereco;
+import com.br.zup.vicente_imoveis.Custom_exception.CpfJaCadastradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class ClienteService {
 
     public Cliente salvarCliente(Cliente cliente) {
         if (cpfJaExiste(cliente)){
-            throw new RuntimeException("CPF já consta no banco de dados, tente acessar as informações do mesmo.");
+            throw new CpfJaCadastradoException("CPF já consta no banco de dados, tente acessar as informações do mesmo.");
         }
         return clienteRepository.save(cliente);
 
