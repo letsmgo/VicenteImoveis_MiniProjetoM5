@@ -3,6 +3,8 @@ package com.br.zup.vicente_imoveis.Contrato;
 import com.br.zup.vicente_imoveis.Contrato.Dtos.ContratoEntradaDTO;
 import com.br.zup.vicente_imoveis.Contrato.Dtos.ContratoSaidaDTO;
 import com.br.zup.vicente_imoveis.Contrato.Enums.StatusDoContrato;
+import com.br.zup.vicente_imoveis.Endereco.Dtos.EnderecoEntradaDTO;
+import com.br.zup.vicente_imoveis.Endereco.Endereco;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +39,17 @@ public class ContratoController {
             contratosDTO.add(contratoDTO);
         }
         return contratosDTO;
+    }
+
+    @PutMapping
+    public List<ContratoSaidaDTO> buscarContratosPorEndereco(@RequestBody EnderecoEntradaDTO enderecoEntradaDTO){
+        List<ContratoSaidaDTO> contratosSaidaDTO = new ArrayList<>();
+        Endereco endereco = modelMapper.map(enderecoEntradaDTO,Endereco.class);
+        for (Contrato contrato : contratoService.buscarContratoPorEndereco(endereco)){
+            ContratoSaidaDTO contratoSaidaDTO = modelMapper.map(contrato,ContratoSaidaDTO.class);
+            contratosSaidaDTO.add(contratoSaidaDTO);
+        }
+        return contratosSaidaDTO;
     }
 
     @PutMapping(path = {("/{id}")})
