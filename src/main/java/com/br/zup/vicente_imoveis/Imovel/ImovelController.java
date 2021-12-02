@@ -51,7 +51,7 @@ public class ImovelController {
     }
 
     @PutMapping(path = {"/{id}"})
-    public ImovelSaidaDTO atualizarImovel(@PathVariable int id, @RequestBody ImovelAtualizarDTO imovelAtualizarDTO){
+    public ImovelSaidaDTO atualizarImovel(@PathVariable int id, @RequestBody @Valid ImovelAtualizarDTO imovelAtualizarDTO){
         Imovel imovel = imovelService.atualizarImovel(id,imovelAtualizarDTO);
 
         return modelMapper.map(imovel, ImovelSaidaDTO.class);
