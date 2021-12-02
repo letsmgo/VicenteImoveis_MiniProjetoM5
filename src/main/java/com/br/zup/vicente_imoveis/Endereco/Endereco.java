@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "enderecos")
@@ -24,4 +25,16 @@ public class Endereco {
     private String cidade;
     private String estado;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Endereco endereco = (Endereco) o;
+        return numero == endereco.numero && Objects.equals(cep, endereco.cep) && Objects.equals(logradouro, endereco.logradouro) && Objects.equals(complemento, endereco.complemento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cep, logradouro, numero, complemento);
+    }
 }
