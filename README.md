@@ -44,3 +44,10 @@ PARA O CONTRATO:
 - Visualizar um contrato específico levando como base o id do imóvel, ou o cpf do cliente;
 - Visualizar todos os contratos levando como base o status do contrato;
 - Encerrar um contrato mantendo como arquivo os encerrados.
+
+UML
+-
+<img width="499" alt="image" src="https://user-images.githubusercontent.com/85710746/144650896-aa437ef6-57fa-454b-a4e4-cc9f1ea5b283.png">
+<img width="497" alt="image" src="https://user-images.githubusercontent.com/85710746/144650962-7267a373-00c3-4130-8256-158ee30ec959.png">
+<img width="485" alt="image" src="https://user-images.githubusercontent.com/85710746/144651003-974d19c7-02fe-4cd2-bd5a-6a0f09fc86b5.png">
+<img width="482" alt="image" src="https://user-images.githubusercontent.com/85710746/144651079-9b7080a2-14c6-421a-8d74-4fae7c837791.png">
