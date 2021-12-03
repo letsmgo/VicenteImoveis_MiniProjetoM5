@@ -28,8 +28,8 @@ public class Endereco {
     private String logradouro;
     @Column(nullable = false)
     @NotNull(message = "Informe o número do endereço")
-    @Min(value = 1)
-    private int numero;
+    @Min(value = 1, message = "Numero do endereço deve ser maior que 0")
+    private Integer numero;
     @Column(columnDefinition = "VARCHAR(50) default 'NT'")
     private String complemento;
     @Column(nullable = false)

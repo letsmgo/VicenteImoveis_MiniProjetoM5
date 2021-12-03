@@ -15,13 +15,12 @@ import javax.validation.constraints.Size;
 @Setter
 public class ClienteDTO {
     @CPF(message ="CPF inválido")
-    @NotNull
+    @NotNull(message = "O campo CPF deve ser preenchido")
     private String cpf;
     @NotBlank
     @Size(min = 2,message = "O nome não pode ter menos de 2 caracteres")
     private String nome;
-    // @Pattern("\\")
-    @NotNull
+    @NotNull(message = "O campo telefone precisa ser preenchido")
     private String telefone;
 
     public ClienteDTO(String cpf, String nome, String telefone) {
