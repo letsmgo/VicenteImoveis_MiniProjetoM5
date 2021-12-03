@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class ContratoEntradaDTO {
-    @NotNull
-    private int id_imovel;
-    @NotNull
+    @NotNull(message = "Por favor informar ID do imovel")
+    private Integer id_imovel;
+    @NotNull(message = "Por favor informar CPF do novo morador")
     private String id_morador;
 }

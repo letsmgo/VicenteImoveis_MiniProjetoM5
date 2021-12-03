@@ -7,23 +7,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @RequiredArgsConstructor
 @Getter
 @Setter
 public class ImovelEntradaDTO {
 
-    @DecimalMin(value = "0.0", inclusive = false, message = "Valor abaixo do permitido")
+    @DecimalMin(value = "50.0", inclusive = false, message = "Valor abaixo do permitido")
     @Digits(integer = 10, fraction = 2, message = "Valor inválido")
     private double valor;
     @NotNull(message = "Adicione o tipo do imovel")
     private String tipoDeImovel;
     @NotNull(message = "A quantidade de banheiros deve ser informada")
-    private int qtdBanheiros;
+    @Min(value = 1, message = "Por favor corrija os dados da quantidade de banheiros")
+    private Integer qtdBanheiros;
     @Valid
     private Endereco endereco;
     @DecimalMin(value = "0.0", inclusive = false, message = "Tamanho abaixo do permitido")
