@@ -19,7 +19,6 @@ public class ClienteDTO {
     private String cpf;
     @NotBlank
     @Size(min = 2,message = "O nome não pode ter menos de 2 caracteres")
-    @NotNull
     private String nome;
     // @Pattern("\\")
     @NotNull
