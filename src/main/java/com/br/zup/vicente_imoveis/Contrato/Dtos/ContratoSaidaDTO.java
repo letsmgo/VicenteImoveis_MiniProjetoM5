@@ -18,13 +18,15 @@ public class ContratoSaidaDTO {
     private Cliente cliente;
     private StatusDoContrato statusDoContrato;
     private LocalDate dataDoContrato;
+    private LocalDate dataTerminoContrato;
 
     public ContratoSaidaDTO(int id, Imovel imovel, Cliente cliente, StatusDoContrato statusDoContrato,
-                            LocalDate dataDoContrato) {
+                            LocalDate dataDoContrato, LocalDate dataTerminoContrato) {
         this.id = id;
         this.imovel = imovel;
         this.cliente = cliente;
         this.statusDoContrato = statusDoContrato;
         this.dataDoContrato = dataDoContrato;
+        this.dataTerminoContrato = dataTerminoContrato;
     }
 }
